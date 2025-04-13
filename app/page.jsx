@@ -1,11 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import Header from "./Components/header";
+import RoomCard from "./Components/grid";
+
+import AnchorStyle from "./Components/anchor";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isOntop, setOntop] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY == 0) {
+        setOntop(true);
+      } else if (window.scrollY >= 200) {
+        setOntop(false);
+      }
+    });
+  });
   return (
-    <div className="px-24">
-      <Header />
-      <footer className="mt-[85rem] row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+    <div className="outest Div">
+      <div className="sticky top-0 z-30 bg-white">
+        <Header isOntop={isOntop} />
+        {/* Anchor */}
+        <AnchorStyle />
+        {/* Anchor */}
+      </div>
+
+      <RoomCard />
+
+      <footer className="mt-96 row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
