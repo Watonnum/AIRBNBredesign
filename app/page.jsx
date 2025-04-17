@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isOntop, setOntop] = useState(true);
+  const [filter, setFilter] = useState("penthouse");
 
   useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -24,11 +25,11 @@ export default function Home() {
       <div className="sticky top-0 z-30 bg-white">
         <Header isOntop={isOntop} />
         {/* Anchor */}
-        <AnchorStyle />
+        <AnchorStyle filter={filter} setFilter={setFilter} />
         {/* Anchor */}
       </div>
 
-      <RoomCard />
+      <RoomCard filter={filter} />
 
       <footer className="mt-96 row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a

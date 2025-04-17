@@ -1,6 +1,10 @@
+"use client";
+import { useState } from "react";
 import SerchingComponent from "./serching";
 
 export default function Header({ isOntop }) {
+  const [currentNav, setCurrentNav] = useState("เอ็กซ์พีเรียนซ์");
+
   const nav = [
     { name: "ที่พัก", path: "/", current: true },
     { name: "เอ็กซ์พีเรียนซ์", path: "/explore", current: false },
@@ -11,7 +15,7 @@ export default function Header({ isOntop }) {
     { name: "profile-icon", path: "/img/profileUser.png" },
   ];
 
-  console.log(isOntop);
+  console.log(currentNav);
   return (
     <div className="py-10 px-24 border-b-2 border-[#DDDDDD] bg-white sticky top-0 z-30">
       {/* Header (icon nav Acc) */}
@@ -37,8 +41,16 @@ export default function Header({ isOntop }) {
             {nav.map((data, index) => {
               return (
                 <p
-                  className="text-[2rem] cursor-pointer hover:border-0 hover:bg-[#DDDDDD] rounded-full hover:text-black text-[#DDDD] px-[2rem] py-[1rem] duration-200"
+                  className={`${
+                    currentNav === data.name
+                      ? "text-black"
+                      : "hover:bg-[#DDDDDD]"
+                  }
+                  text-[2rem] cursor-pointer hover:border-0 rounded-full hover:text-black text-[#DDDD] px-[2rem] py-[1rem] duration-200`}
                   key={index}
+                  onClick={() => {
+                    setCurrentNav(data.name);
+                  }}
                 >
                   {data.name}
                 </p>
