@@ -3,11 +3,11 @@ import { useState } from "react";
 import SerchingComponent from "./serching";
 
 export default function Header({ isOntop }) {
-  const [currentNav, setCurrentNav] = useState("เอ็กซ์พีเรียนซ์");
+  const [currentNav, setCurrentNav] = useState("ที่พัก");
 
   const nav = [
-    { name: "ที่พัก", path: "/", current: true },
-    { name: "เอ็กซ์พีเรียนซ์", path: "/explore", current: false },
+    { name: "ที่พัก", path: "/" },
+    { name: "เอ็กซ์พีเรียนซ์", path: "/" },
   ];
 
   const sourceImg = [
@@ -15,7 +15,6 @@ export default function Header({ isOntop }) {
     { name: "profile-icon", path: "/img/profileUser.png" },
   ];
 
-  console.log(currentNav);
   return (
     <div className="py-10 px-24 border-b-2 border-[#DDDDDD] bg-white sticky top-0 z-30">
       {/* Header (icon nav Acc) */}
@@ -44,7 +43,7 @@ export default function Header({ isOntop }) {
                   className={`${
                     currentNav === data.name
                       ? "text-black"
-                      : "hover:bg-[#DDDDDD]"
+                      : "hover:bg-[#d6d6d6]"
                   }
                   text-[2rem] cursor-pointer hover:border-0 rounded-full hover:text-black text-[#DDDD] px-[2rem] py-[1rem] duration-200`}
                   key={index}
@@ -58,7 +57,7 @@ export default function Header({ isOntop }) {
             })}
           </div>
 
-          <SerchingComponent isOntop={isOntop} />
+          <SerchingComponent isOntop={isOntop} currentNav={currentNav} />
         </div>
         {/* 2components nav */}
 

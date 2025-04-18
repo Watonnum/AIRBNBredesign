@@ -9,7 +9,9 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isOntop, setOntop] = useState(true);
-  const [filter, setFilter] = useState("penthouse");
+  const [filter, setFilter] = useState(
+    typeof window !== "undefined" && localStorage.getItem("filterLCstorage")
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", function () {

@@ -6,14 +6,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const carouselItems_1 = [
-  { img: "/svg/room-service-hotel.svg", label: "penthouse", id: 1 },
-  { img: "/svg/fish-plate.svg", label: "beach", id: 2 },
-  { img: "/svg/tray-dinner.svg", label: "treeHouse", id: 3 },
-  { img: "/svg/sushi.svg", label: "poolHouse", id: 4 },
-  { img: "/svg/pancakes-dessert.svg", label: "hitz", id: 5 },
-];
 export default function AnchorStyle({ filter, setFilter }) {
+  const carouselItems_1 = [
+    { img: "/svg/beach-umbrella.svg", label: "ริมทะเล", id: 1 },
+    { img: "/svg/ufo.svg", label: "แปลก", id: 2 },
+    { img: "/svg/treehouse.svg", label: "บ้านต้นไม้", id: 3 },
+    { img: "/svg/penthouse.svg", label: "มีดีไซน์", id: 4 },
+    { img: "/svg/green-house.svg", label: "บ้านสีเขียว", id: 5 },
+  ];
   return (
     <Carousel className="w-3/4 mx-auto my-4">
       <CarouselPrevious />
@@ -23,18 +23,17 @@ export default function AnchorStyle({ filter, setFilter }) {
           {carouselItems_1.slice(0, 5).map((item, index) => {
             return (
               <div
-                className={` ${
-                  filter === item.label ? "text-black bg-red" : "opacity-50"
-                } 
-                item-center flex flex-col justify-center items-center cursor-pointer hover:bg-gray-200 p-4 rounded-lg shadow-md transition duration-200`}
+                className={`${
+                  filter === item.label ? "text-black font-bold" : "opacity-50"
+                } text-2xl item-center flex flex-col justify-center items-center cursor-pointer hover:bg-gray-200 p-4 rounded-lg shadow-md transition duration-200 border-2 border-b-2 border-[#DDDD]`}
                 key={index}
                 onClick={() => {
+                  localStorage.setItem("filterLCstorage", item.label);
                   setFilter(item.label);
-                  console.log(filter);
                 }}
               >
-                <img src={item.img} alt="svg" className="w-14" />
-                <p className="">{item.label}</p>
+                <img src={item.img} alt="svg" className="w-20" />
+                <p className="mt-4">{item.label}</p>
               </div>
             );
           })}
