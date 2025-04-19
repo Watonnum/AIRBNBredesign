@@ -33,7 +33,7 @@ export default function Header({ isOntop }) {
           <div
             className={
               isOntop
-                ? `flex gap-x-[3rem] justify-center items-center duration-500`
+                ? `flex gap-x-[3rem] justify-center items-center duration-500 mb-10`
                 : `-my-24 opacity-0 hidden duration-500`
             }
           >
@@ -45,7 +45,7 @@ export default function Header({ isOntop }) {
                       ? "text-black"
                       : "hover:bg-[#d6d6d6]"
                   }
-                  text-[2rem] cursor-pointer hover:border-0 rounded-full hover:text-black text-[#DDDD] px-[2rem] py-[1rem] duration-200`}
+                  text-4xl cursor-pointer hover:border-0 rounded-full hover:text-black text-[#DDDD] px-[2rem] py-[1rem] duration-200`}
                   key={index}
                   onClick={() => {
                     setCurrentNav(data.name);

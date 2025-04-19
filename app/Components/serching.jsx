@@ -22,8 +22,8 @@ export default function SerchingComponent({ isOntop, currentNav }) {
   return (
     <div
       className={`${
-        isOntop ? "w-[96rem]" : "w-[38rem]"
-      } mx-auto mt-[3rem] justify-center bg-white duration-500 rounded-full shadow-md border-2 border-b-2 border-[#DDDD]`}
+        isOntop ? "w-[96rem]" : "w-[60rem]"
+      } mx-auto justify-center bg-white duration-500 rounded-full shadow-md border-2 border-b-2 border-[#DDDD]`}
       // {`${} mx`}
     >
       {isOntop ? (
@@ -43,29 +43,27 @@ export default function SerchingComponent({ isOntop, currentNav }) {
                     : ""
                 }`}
               >
-                <div>
-                  <p className="text-2xl font-bold text-black">
+                <div className="flex flex-col gap-y-2">
+                  <p className="text-3xl text-black">
                     {currentNav == "เอ็กซ์พีเรียนซ์" ? data.name : data.label}
                   </p>
                   <input
                     ref={(el) => (inputRefs.current[index] = el)} // เก็บ ref ของ input แต่ละตัว
                     type="text"
                     placeholder={data.text}
-                    className="text-3xl text-[#6d6c6c] font-bold bg-transparent border-none focus:outline-none focus:ring-0"
+                    className="text-4xl text-[#6d6c6c] bg-transparent border-none focus:outline-none focus:ring-0"
                   />
                 </div>
               </div>
             );
           })}
 
-          <div className="p-2 pl-8 flex hover:bg-[#EBEBEB] rounded-full h-full cursor-pointer col-span-2 duration-200">
-            <div className="w-full flex-col flex justify-center">
-              <p className="text-2xl font-bold text-black">ใคร</p>
-              <p className="text-3xl text-[#6d6c6c] font-bold">
-                เพิ่มผู้เข้าพัก
-              </p>
+          <div className="p-2 pl-8 flex justify-center items-center hover:bg-[#EBEBEB] rounded-full h-full cursor-pointer col-span-2 duration-200">
+            <div className="w-full flex-col flex justify-center gap-y-2">
+              <p className="text-3xl text-black">ใคร</p>
+              <p className="text-4xl text-[#6d6c6c]">เพิ่มผู้เข้าพัก</p>
             </div>
-            <div className="text-[5rem] text-white bg-[#E31C56] rounded-full p-4 flex justify-center items-center">
+            <div className="text-5xl text-white bg-[#E31C56] rounded-full h-28 px-8 font-bold flex justify-center items-center">
               <HiMagnifyingGlass />
             </div>
           </div>
@@ -73,29 +71,28 @@ export default function SerchingComponent({ isOntop, currentNav }) {
       ) : (
         <div
           className={`
-        grid grid-cols-3`}
+        grid grid-cols-3 justify-center items-center hover:shadow-lg duration-200 rounded-full`}
         >
-          <div
-            className={`px-[3rem] py-[1rem] hover:bg-[#EBEBEB] items-center rounded-full cursor-pointer `}
+          <button
+            type="submit"
+            className="text-4xl text-black px-[4rem] py-[2rem] items-center flex justify-center rounded-full cursor-pointer"
           >
-            <div>
-              <p className=" font-bold text-black">สถานที่</p>
-            </div>
-          </div>
-          <div
-            className={`px-[3rem] py-[1rem] hover:bg-[#EBEBEB] items-center rounded-full cursor-pointer `}
+            ทุกที่
+          </button>
+
+          <button
+            type="submit"
+            className="text-4xl text-black px-[4rem] py-[2rem] items-center flex justify-center rounded-full cursor-pointer"
           >
-            <div>
-              <p className=" font-bold text-black">สถานที่</p>
-            </div>
-          </div>
-          <div
-            className={`px-[3rem] py-[1rem] hover:bg-[#EBEBEB] items-center rounded-full cursor-pointer `}
+            ทุกเวลา
+          </button>
+
+          <button
+            type="submit"
+            className="text-4xl text-black px-[4rem] py-[2rem] items-center flex justify-center rounded-full cursor-pointer"
           >
-            <div>
-              <p className=" font-bold text-black">สถานที่</p>
-            </div>
-          </div>
+            เพิ่มผู้เข้าพัก
+          </button>
         </div>
       )}
     </div>

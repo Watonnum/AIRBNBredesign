@@ -19,27 +19,27 @@ export default function AnchorStyle({ filter, setFilter }) {
       <CarouselPrevious />
       <CarouselContent>
         {/* Category 1 section */}
-        <CarouselItem className="items-center m-4 grid grid-cols-5 gap-4">
+        <CarouselItem className="items-center m-4 grid grid-cols-10 gap-4">
           {carouselItems_1.slice(0, 5).map((item, index) => {
             return (
               <div
                 className={`${
                   filter === item.label ? "text-black font-bold" : "opacity-50"
-                } text-2xl item-center flex flex-col justify-center items-center cursor-pointer hover:bg-gray-200 p-4 rounded-lg shadow-md transition duration-200 border-2 border-b-2 border-[#DDDD]`}
+                } text-2xl item-center flex flex-col justify-center items-center cursor-pointer rounded-2xl hover:bg-gray-200 p-4 transition duration-200 `}
                 key={index}
                 onClick={() => {
                   localStorage.setItem("filterLCstorage", item.label);
                   setFilter(item.label);
                 }}
               >
-                <img src={item.img} alt="svg" className="w-20" />
+                <img src={item.img} alt="svg" className="w-16" />
                 <p className="mt-4">{item.label}</p>
               </div>
             );
           })}
         </CarouselItem>
         {/* Category 2 section */}
-        <CarouselItem className="items-center m-4 grid grid-cols-5 gap-4">
+        {/* <CarouselItem className="items-center m-4 grid grid-cols-5 gap-4">
           {carouselItems_1.slice(5, 10).map((item, index) => {
             return (
               <div
@@ -51,7 +51,7 @@ export default function AnchorStyle({ filter, setFilter }) {
               </div>
             );
           })}
-        </CarouselItem>
+        </CarouselItem> */}
       </CarouselContent>
       <CarouselNext />
     </Carousel>
