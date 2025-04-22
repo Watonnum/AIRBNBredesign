@@ -16,16 +16,12 @@ export default function Header({ isOntop }) {
   ];
 
   return (
-    <div className="py-10 px-24 border-b-2 border-[#DDDDDD] bg-white sticky top-0 z-30">
+    <div className="py-4 border-b-1 border-[#f2f1f1] bg-white sticky top-0 z-30 mx-24">
       {/* Header (icon nav Acc) */}
 
-      <div className="flex justify-between h-fit">
+      <div className="flex justify-between">
         {/* logo */}
-        <img
-          src="/img/airbnb.png"
-          alt="Airbnb logo"
-          className="h-full items-center"
-        />
+        <img src="/img/airbnb.png" alt="Airbnb logo" className="w-16 h-full" />
         {/* logo */}
 
         {/* 2components nav */}
@@ -45,7 +41,7 @@ export default function Header({ isOntop }) {
                       ? "text-black"
                       : "hover:bg-[#d6d6d6]"
                   }
-                  text-4xl cursor-pointer hover:border-0 rounded-full hover:text-black text-[#DDDD] px-[2rem] py-[1rem] duration-200`}
+                  text-xl font-bold cursor-pointer hover:border-0 rounded-full hover:text-black text-[#DDDD] px-6 py-2 duration-200`}
                   key={index}
                   onClick={() => {
                     setCurrentNav(data.name);
@@ -62,22 +58,20 @@ export default function Header({ isOntop }) {
         {/* 2components nav */}
 
         {/* customer Account */}
-        <div className="flex border border-[#DDDDDD] h-full px-[1.5rem] py-[1rem] items-center rounded-full hover:shadow-lg cursor-pointer gap-[1.5rem] duration-200">
+        <div className="flex border border-[#DDDDDD] h-full px-4 py-3 items-center rounded-full hover:shadow-lg cursor-pointer gap-4 duration-200">
           {sourceImg.map((data, index) => {
             return (
               <img
                 src={data.path}
                 alt={data.name}
                 key={index}
-                className="h-16"
+                className="h-8"
               />
             );
           })}
         </div>
         {/* customer Account */}
       </div>
-
-      {/* serching component */}
     </div>
   );
 }

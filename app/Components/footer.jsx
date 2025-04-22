@@ -94,16 +94,16 @@ export default function Footer() {
 
   // Social links
   const socialLinks = [
-    { icon: <FaFacebookF size={32} />, label: "Facebook" },
-    { icon: <FaTwitter size={32} />, label: "Twitter" },
-    { icon: <FaInstagram size={32} />, label: "Instagram" },
+    { icon: <FaFacebookF size={24} />, label: "Facebook" },
+    { icon: <FaTwitter size={24} />, label: "Twitter" },
+    { icon: <FaInstagram size={24} />, label: "Instagram" },
   ];
 
   return (
     <>
       {/* Main Footer Navigation */}
       <div className="w-full p-8">
-        <div className="text-5xl font-medium mb-8">
+        <div className="text-2xl font-medium mb-8">
           แรงบันดาลใจสำหรับการพักผ่อนในอนาคต
         </div>
 
@@ -117,7 +117,7 @@ export default function Footer() {
                   ? "text-gray-800 border-b-2 border-gray-800"
                   : "text-gray-500 hover:text-gray-800 hover:border-b-2 hover:border-gray-800"
               } 
-                pb-3 md:pb-4 text-4xl font-medium text-left`}
+                pb-3 md:pb-4 text-xl font-medium text-left`}
             >
               {category.name}
             </button>
@@ -139,18 +139,18 @@ export default function Footer() {
                 console.log("Unhovered");
               }}
             >
-              <h3 className="font-medium text-4xl mb-4">{destination.title}</h3>
+              <h3 className="font-medium text-xl mb-4">{destination.title}</h3>
               <p
                 className={`${
                   hovered[index] ? "text-black" : "text-gray-500"
-                } text-4xl`}
+                } text-xl`}
               >
                 {destination.description}
               </p>
             </div>
           ))}
           <div className="flex items-center">
-            <button className="text-gray-800 text-4xl font-medium flex items-center">
+            <button className="text-gray-800 text-xl font-medium flex items-center cursor-pointer hover:scale-105 duration-200">
               แสดงมากขึ้น
               <svg
                 className="w-5 h-5 ml-1"
@@ -177,13 +177,13 @@ export default function Footer() {
               key={sectionIndex}
               className="flex flex-col justify-between items-center"
             >
-              <h3 className="font-medium text-4xl mb-6">{section.title}</h3>
+              <h3 className="font-medium text-xl mb-6">{section.title}</h3>
               <ul className="space-y-4 flex flex-col items-center">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <Link
                       href="#"
-                      className="text-4xl text-gray-500 hover:underline"
+                      className="text-base text-gray-500 hover:underline"
                     >
                       {link}
                     </Link>
@@ -195,8 +195,8 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-6 pb-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col md:flex-row md:items-center mb-6 md:mb-0 text-4xl text-gray-500">
+        <div className="pt-6 pb-2 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row md:items-center mb-6 md:mb-0 text-base text-gray-500">
             <div>© 2025 Airbnb, Inc.</div>
             <div className="hidden md:flex md:items-center">
               {["ความเป็นส่วนตัว", "เงื่อนไข", "แผนผังเว็บไซต์"].map(
@@ -213,17 +213,19 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center">
-            <button className="flex items-center mr-6 text-4xl font-medium">
-              <FaGlobe className="mr-2" size={32} />
+            <button className="flex items-center mr-6 text-base font-medium">
+              <FaGlobe className="mr-2" size={16} />
               ไทย
             </button>
-            <button className="mr-6 text-4xl font-medium">฿ THB</button>
+            <button className="mr-6 text-base font-medium">฿ THB</button>
 
             {socialLinks.map((social, index) => (
               <Link
                 key={index}
                 href="#"
-                className={index < socialLinks.length - 1 ? "mr-4" : ""}
+                className={
+                  index < socialLinks.length - 1 ? "mr-4 text-base" : ""
+                }
                 aria-label={social.label}
               >
                 {social.icon}

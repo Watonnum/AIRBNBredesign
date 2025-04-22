@@ -17,14 +17,16 @@ export default function Home() {
     window.addEventListener("scroll", function () {
       if (window.scrollY == 0) {
         setOntop(true);
-      } else if (window.scrollY >= 300) {
+      } else if (window.scrollY >= 100) {
         setOntop(false);
       }
     });
   });
   return (
-    <div className="outest Div">
-      <div className="sticky top-0 z-30 bg-white shadow-xl">
+    <div className="">
+      <div
+        className={` ${isOntop ? "" : "shadow-sm"} sticky top-0 z-30 bg-white`}
+      >
         <Header isOntop={isOntop} />
         {/* Anchor */}
         <AnchorStyle filter={filter} setFilter={setFilter} />

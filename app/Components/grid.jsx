@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { mockAPI } from "../../utils/mockAPI";
 import Showmore from "./showmore";
 import {
@@ -7,72 +8,90 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useState } from "react";
 
 export default function RoomCard({ filter }) {
   return (
-    <div className="mx-40 my-4 h-500">
-      <div className="grid grid-cols-6 gap-8">
+    <div className="mx-24 my-4 h-250">
+      <div className="grid grid-cols-6 gap-5">
         {mockAPI
           .filter((room) => room.type === filter)
           .map((room, index) => (
-            <div
-              key={index}
-              className="rounded-4xl overflow-hidden transition duration-200 cursor-pointer w-full h-[50rem] flex flex-col justify-between"
-            >
-              {/* Image Section */}
-              <div className="relative">
-                <Carousel>
-                  <CarouselPrevious className="absolute top-1/2 left-4 z-10" />
-                  <CarouselContent>
-                    {room.image.map((img, index) => (
-                      <CarouselItem key={index} className="w-full h-[36rem]">
-                        <img
-                          src={img}
-                          alt={room.name}
-                          className="w-full h-full object-cover rounded-4xl"
-                        />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselNext className="absolute top-1/2 right-4 z-10" />
-                </Carousel>
-                {/* <img
-                  src={room.image[0] || "/placeholder.jpg"}
-                  alt={room.name}
-                  className="w-full h-[36rem] object-cover rounded-4xl"
-                /> */}
-                {room.rating >= 4.9 && (
-                  <div className="absolute top-8 left-8 bg-white text-black text-sm px-4 py-2 rounded-full">
-                    <p className="text-3xl font-bold text-black">
-                      🏆 โดนใจผู้เข้าพัก
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {/* Content Section */}
-              <div className="p-4 flex flex-col justify-between">
-                <div className="flex items-start justify-between h-16">
-                  <p className="text-2xl font-semibold">{room.name}</p>
-                </div>
-                <p className="text-gray-600 text-2xl my-4">
-                  {room.type || "N/A"}
-                </p>
-                <div className="flex items-center justify-between">
-                  <p className="text-black text-2xl font-bold">
-                    ฿ {room.price} / คืน
-                  </p>
-                  <p className="text-gray-600 text-2xl font-semibold">
-                    ★ {room.rating || "N/A"}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <ContentGrid key={index} room={room} />
           ))}
       </div>
 
       {/* Show content more */}
       <Showmore />
+    </div>
+  );
+}
+
+function ContentGrid({ room, index }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <div
+      key={index}
+      onMouseEnter={() => {
+        console.log("hover");
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        console.log("unhover");
+        setHover(false);
+      }}
+      className="rounded-lg overflow-hidden transition duration-200 cursor-pointer h-[24rem] flex flex-col justify-between [$_.opop1]:hidden"
+    >
+      {/* Image Section */}
+      <div className="relative">
+        <Carousel>
+          <CarouselPrevious
+            className={`${
+              hover ? "left-4" : "-left-20"
+            } absolute top-1/2 z-10 duration-200 transition-all bg-white size-10 border-0`}
+          />
+          <Link key={index} href={`/rooms/${room?.id}`}>
+            <CarouselContent>
+              {room.image.map((img, index) => (
+                <CarouselItem key={index} className="w-full p-0 rounded-4xl">
+                  <img
+                    src={img}
+                    alt={room.name}
+                    className="w-full h-64 object-cover rounded-xl hover:scale-110 duration-200"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Link>
+          <CarouselNext
+            className={`${
+              hover ? "right-4" : "-right-20"
+            } absolute top-1/2 z-10 bg-white size-10 border-0`}
+          />
+        </Carousel>
+
+        {room.rating >= 4.9 && (
+          <div className="absolute top-4 left-4 bg-white text-black text-sm px-4 py-2 rounded-full">
+            <p className="text-sm font-bold text-black">🏆 โดนใจผู้เข้าพัก</p>
+          </div>
+        )}
+      </div>
+
+      {/* Content Section */}
+      <Link key={index} href={`/rooms/${room?.id}`}>
+        <div className="flex flex-col justify-between mt-4">
+          <div className="flex items-start justify-between h-5">
+            <p className="text-sm font-semibold">{room.name}</p>
+          </div>
+          <p className="text-gray-600 text-base mt-8">{room.type || "N/A"}</p>
+          <div className="flex items-center justify-between mt-4">
+            <p className="text-black text-sm font-bold">฿ {room.price} / คืน</p>
+            <p className="text-gray-600 text-sm font-semibold">
+              ★ {room.rating || "N/A"}
+            </p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }

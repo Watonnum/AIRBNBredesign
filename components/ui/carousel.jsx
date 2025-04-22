@@ -121,7 +121,7 @@ function CarouselContent({ className, ...props }) {
       <div
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "" : "flex-col",
           className
         )}
         {...props}
@@ -162,7 +162,7 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-20 rounded-full cursor-pointer z-10",
+        "absolute size-12 rounded-full cursor-pointer z-10",
         orientation === "horizontal"
           ? "top-1/2 -left-12 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -191,13 +191,14 @@ function CarouselNext({
     <Button
       data-slot="carousel-next"
       variant={variant}
-      size={size}
+      size="xl"
       className={cn(
-        "absolute size-20 rounded-full cursor-pointer z-10",
+        "absolute size-12 rounded-full cursor-pointer z-10",
         orientation === "horizontal"
           ? "top-1/2 -right-12 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
+        className,
+        "text-3xl"
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}

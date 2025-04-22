@@ -15,25 +15,27 @@ export default function AnchorStyle({ filter, setFilter }) {
     { img: "/svg/green-house.svg", label: "บ้านสีเขียว", id: 5 },
   ];
   return (
-    <Carousel className="w-3/4 mx-auto my-4">
+    <Carousel className="mx-20">
       <CarouselPrevious />
       <CarouselContent>
         {/* Category 1 section */}
-        <CarouselItem className="items-center m-4 grid grid-cols-10 gap-4">
+        <CarouselItem className="items-center my-2 grid grid-cols-16">
           {carouselItems_1.slice(0, 5).map((item, index) => {
             return (
               <div
                 className={`${
-                  filter === item.label ? "text-black font-bold" : "opacity-50"
-                } text-2xl item-center flex flex-col justify-center items-center cursor-pointer rounded-2xl hover:bg-gray-200 p-4 transition duration-200 `}
+                  filter === item.label
+                    ? "text-black font-bold border-b-2"
+                    : "opacity-40"
+                } w-full mt-3 mb-2.5 py-1 text-sm item-center flex flex-col justify-center items-center cursor-pointer transition duration-200 `}
                 key={index}
                 onClick={() => {
                   localStorage.setItem("filterLCstorage", item.label);
                   setFilter(item.label);
                 }}
               >
-                <img src={item.img} alt="svg" className="w-16" />
-                <p className="mt-4">{item.label}</p>
+                <img src={item.img} alt="svg" className="w-6" />
+                <p className={`mt-2`}>{item.label}</p>
               </div>
             );
           })}
