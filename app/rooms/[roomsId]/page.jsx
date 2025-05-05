@@ -1,8 +1,10 @@
 import Header from "@/app/Components/header";
 import { mockAPI } from "@/utils/mockAPI";
 import { CiShare1, CiHeart } from "react-icons/ci";
+import RoomInfocard from "@/app/Components/roomInfocard";
+import RoomImgCard from "@/app/Components/roomImgCard";
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return mockAPI.map((room) => ({ id: `${room.id}` }));
 }
 
@@ -20,46 +22,32 @@ const Room = ({ param }) => {
   const room = mockAPI.filter((data) => param.roomsId == data.id)[0];
 
   return (
-    <div className="flex flex-col mx-auto">
-      <div className="flex justify-between">
-        <p>{room.name}</p>
+    <div className="flex flex-col max-w-[108rem] mx-auto">
+      {/* section name card */}
+      <div className="flex justify-between mt-4">
+        <p className="text-2xl font-bold">{room.name}</p>
         <div className="grid grid-cols-2 gap-4">
-          <div className="flex">
+          <div className="flex gap-x-2 justify-center items-center hover:underline">
             <CiShare1 />
-            <a href="">แชร์</a>
+            <a href={"/"}>แชร์</a>
           </div>
-          <div className="flex">
+          <div className="flex gap-x-2 justify-center items-center">
             <CiHeart />
-            <a href="">แชร์</a>
+            <a href="">ชอบ</a>
           </div>
         </div>
       </div>
+      {/* section name card */}
 
-      <div className="grid grid-cols-2 gap-4 rounded-3xl">
-        <img src={room.image[0]} alt={room.name[0]} className="w-full h-full" />
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src={room.image[1]}
-            alt=""
-            className="object-cover w-full h-full"
-          />
-          <img
-            src={room.image[2]}
-            alt=""
-            className="object-cover w-full h-full"
-          />
-          <img
-            src={room.image[3]}
-            alt=""
-            className="object-cover w-full h-full"
-          />
-          <img
-            src={room.image[4]}
-            alt=""
-            className="object-cover w-full h-full"
-          />
-        </div>
-      </div>
+      {/* section image */}
+      <RoomImgCard image={room.image} name={room.name} />
+      {/* section image */}
+
+      {/* section about */}
+      <RoomInfocard description={room.des} rating={room.rating} />
+      {/* section about */}
+
+      <div className="h-[100vh]" />
     </div>
   );
 };

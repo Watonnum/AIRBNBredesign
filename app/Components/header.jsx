@@ -19,8 +19,9 @@ export default function Header({ isOntop }) {
   const UserProfilePage = () => <UserProfile />;
   // from clerk
 
-  const infoUser = useUser().user;
-  console.log("info user :", infoUser);
+  // info User
+  // const infoUser = useUser().user;
+  // console.log("info user :", infoUser);
 
   const nav = [
     { name: "ที่พัก", path: "/" },
@@ -90,7 +91,7 @@ export default function Header({ isOntop }) {
               appearance={{
                 elements: {
                   userButtonBox:
-                    "flex justify-center item-center px-6 py-2 hover:shadow-xl rounded-xl duration-200 selection:border-0",
+                    "flex justify-center item-center px-2 py-2 hover:shadow-xl rounded-xl duration-200 selection:border-0",
                   avatarBox: "size-16",
                   userButtonOuterIdentifier: "text-xl",
                 },
