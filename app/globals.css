@@ -3,3 +3,12 @@
 
 /* text-xl : หัวข้อ */
 /* text-base : หัวข้อย่อย/เนื้อหา */
+
+.cl-userButtonOuterIdentifier {
+    font-size: 18px;
+    color: gray;
+}
+.cl-avatarBox {
+    width: 48px;
+    height: 48px;
+}
