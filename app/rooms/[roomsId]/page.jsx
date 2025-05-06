@@ -1,8 +1,10 @@
 import Header from "@/app/Components/header";
 import { mockAPI } from "@/utils/mockAPI";
-import { CiShare1, CiHeart } from "react-icons/ci";
 import RoomInfocard from "@/app/Components/roomInfocard";
 import RoomImgCard from "@/app/Components/roomImgCard";
+import RoomHeader from "@/app/Components/roomheader";
+import RoomDesc from "@/app/Components/roomDesc";
+import RoomSummary from "@/app/Components/roomSummary";
 
 export function generateStaticParams() {
   return mockAPI.map((room) => ({ id: `${room.id}` }));
@@ -22,30 +24,34 @@ const Room = ({ param }) => {
   const room = mockAPI.filter((data) => param.roomsId == data.id)[0];
 
   return (
-    <div className="flex flex-col max-w-[108rem] mx-auto">
+    <div className="flex flex-col max-w-[70rem] mx-auto">
       {/* section name card */}
-      <div className="flex justify-between mt-4">
-        <p className="text-2xl font-bold">{room.name}</p>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex gap-x-2 justify-center items-center hover:underline">
-            <CiShare1 />
-            <a href={"/"}>แชร์</a>
-          </div>
-          <div className="flex gap-x-2 justify-center items-center">
-            <CiHeart />
-            <a href="">ชอบ</a>
-          </div>
-        </div>
-      </div>
+      <RoomHeader name={room.name} />
       {/* section name card */}
 
       {/* section image */}
       <RoomImgCard image={room.image} name={room.name} />
       {/* section image */}
 
-      {/* section about */}
-      <RoomInfocard description={room.des} rating={room.rating} />
-      {/* section about */}
+      {/* Seperate component */}
+
+      <div className="w-full flex">
+        <div className="w-1/2 flex flex-col justify-center items-start">
+          {/* section about */}
+          <RoomInfocard description={room.des} rating={room.rating} />
+          {/* section about */}
+
+          {/* section desc */}
+          <RoomDesc />
+          {/* section desc */}
+        </div>
+
+        <div className="w-1/2 flex justify-end items-start mt-4">
+          <RoomSummary price={room.price} />
+        </div>
+      </div>
+
+      {/* Seperate component */}
 
       <div className="h-[100vh]" />
     </div>

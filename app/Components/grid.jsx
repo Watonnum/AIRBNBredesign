@@ -50,7 +50,12 @@ function ContentGrid({ room, index }) {
               hover ? "left-4" : "-left-20"
             } absolute top-1/2 z-10 duration-200 transition-all bg-white size-10 border-0`}
           />
-          <Link key={index} href={`/rooms/${room?.id}`}>
+          <Link
+            key={index}
+            href={`/rooms/${room?.id}`}
+            target="_blank" //for new tab
+            rel="noopener noreferrer" //protect access window.open & ไม่ส่งข้อมูล referrer ไปยังหน้าปลายทาง
+          >
             <CarouselContent>
               {room.image.map((img, index) => (
                 <CarouselItem key={index} className="w-full p-0 rounded-4xl">

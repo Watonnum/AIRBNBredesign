@@ -3,7 +3,6 @@ import { useState } from "react";
 import SerchingComponent from "./serching";
 import {
   SignedIn,
-  SignedOut,
   SignInButton,
   useUser,
   UserProfile,
@@ -87,11 +86,10 @@ export default function Header({ isOntop }) {
         {user ? (
           <SignedIn>
             <UserButton
-              showName={true}
               appearance={{
                 elements: {
                   userButtonBox:
-                    "flex justify-center item-center px-2 py-2 hover:shadow-xl rounded-xl duration-200 selection:border-0",
+                    "flex justify-center item-center px-2 py-2 hover:shadow-xl rounded-full duration-200 border-white border hover:scale-120",
                   avatarBox: "size-16",
                   userButtonOuterIdentifier: "text-xl",
                 },
@@ -100,7 +98,7 @@ export default function Header({ isOntop }) {
           </SignedIn>
         ) : (
           <SignInButton>
-            <button className="hover:shadow-xl border-[#EBEBEB] rounded-2xl px-6 py-4 cursor-pointer duration-200 hover:scale-105">
+            <button className="hover:shadow-xl border-[#EBEBEB] rounded-2xl px-6 py-4 cursor-pointer duration-200 hover:scale-120">
               เข้าสู่ระบบ
             </button>
           </SignInButton>
@@ -109,15 +107,4 @@ export default function Header({ isOntop }) {
       {/* customer Account */}
     </div>
   );
-}
-
-{
-  /* <Link href={"/dashboard"}>
-                  <img
-                    src={data.path}
-                    alt={data.name}
-                    key={index}
-                    className="h-8"
-                  />
-                </Link> */
 }
