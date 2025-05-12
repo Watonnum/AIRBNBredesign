@@ -5,6 +5,10 @@ import RoomImgCard from "@/app/Components/roomImgCard";
 import RoomHeader from "@/app/Components/roomheader";
 import RoomDesc from "@/app/Components/roomDesc";
 import RoomSummary from "@/app/Components/roomSummary";
+import Roombedplace from "@/app/Components/roombedplace";
+import AmenitiesList from "@/app/Components/roomAmenitiesList";
+import Datepicker from "@/app/Components/calendar";
+import Calendar from "@/app/Components/calendar";
 
 export function generateStaticParams() {
   return mockAPI.map((room) => ({ id: `${room.id}` }));
@@ -33,7 +37,7 @@ const Room = ({ param }) => {
       <RoomImgCard image={room.image} name={room.name} />
       {/* section image */}
 
-      {/* Seperate component */}
+      {/* Seperate 2 component */}
 
       <div className="w-full flex">
         <div className="w-1/2 flex flex-col justify-center items-start">
@@ -44,6 +48,18 @@ const Room = ({ param }) => {
           {/* section desc */}
           <RoomDesc />
           {/* section desc */}
+
+          {/* bed place */}
+          <Roombedplace image={room.image} desc={room.des} />
+          {/* bed place */}
+
+          {/* amenities list */}
+          <AmenitiesList />
+          {/* amenities list */}
+
+          {/* react day picker */}
+          <Calendar />
+          {/* react day picker */}
         </div>
 
         <div className="w-1/2 flex justify-end items-start mt-4">
@@ -51,9 +67,9 @@ const Room = ({ param }) => {
         </div>
       </div>
 
-      {/* Seperate component */}
+      {/* Seperate 2 component */}
 
-      <div className="h-[100vh]" />
+      <div className="h-[50vh]" />
     </div>
   );
 };

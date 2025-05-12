@@ -1,13 +1,4 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import DialogExpand from "./dialogExpand";
 
 const RoomDesc = () => {
   const descriptionMessage = {
@@ -49,37 +40,7 @@ const RoomDesc = () => {
         </div>
 
         <div className="mt-4">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                variant="outline"
-                className="hover:cursor-pointer hover:scale-102 duration-200 hover:text-[#FF385C]"
-              >
-                Showmore...
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-white max-w-[780px]">
-              <DialogHeader className="p-4 rounded-2xl bg-[#FF385C] flex items-center">
-                <DialogTitle className="text-white font-bold">
-                  {descriptionMessage.header[0]}
-                </DialogTitle>
-              </DialogHeader>
-              <DialogDescription className="hyphens-auto">
-                <div className="flex flex-col justify-center items-start mt-4">
-                  <DialogTitle>{descriptionMessage.header[1]}</DialogTitle>
-                  <p className="text-base mt-2">{descriptionMessage.body[0]}</p>
-                </div>
-                <div className="flex flex-col justify-center items-start mt-4">
-                  <DialogTitle>{descriptionMessage.header[2]}</DialogTitle>
-                  <p className="text-base mt-2">{descriptionMessage.body[1]}</p>
-                </div>
-                <div className="flex flex-col justify-center items-start mt-4">
-                  <DialogTitle>{descriptionMessage.header[3]}</DialogTitle>
-                  <p className="text-base mt-2">{descriptionMessage.body[2]}</p>
-                </div>
-              </DialogDescription>
-            </DialogContent>
-          </Dialog>
+          <DialogExpand descriptionMessage={descriptionMessage} />
         </div>
       </div>
     </>

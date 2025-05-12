@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { mockAPI } from "../../utils/mockAPI";
 import Showmore from "./showmore";
@@ -8,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RoomCard({ filter }) {
   return (
@@ -29,6 +30,15 @@ export default function RoomCard({ filter }) {
 
 function ContentGrid({ room, index }) {
   const [hover, setHover] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true); // เซ็ต mounted เป็น true เมื่อ component โหลดเสร็จ
+    return () => setMounted(false); // cleanup เมื่อ component ถูกทำลาย
+  }, []); // [] หมายถึงทำงานครั้งเดียวตอน mount
+
+  if (!mounted) return null; // ไม่แสดงอะไรถ้ายังไม่ mount
+
   return (
     <div
       key={index}

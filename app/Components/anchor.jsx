@@ -1,3 +1,4 @@
+"use client";
 import {
   Carousel,
   CarouselContent,
@@ -5,8 +6,21 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
 
 export default function AnchorStyle({ filter, setFilter }) {
+  const [mounted, setMounted] = useState(false);
+  const [localFilter, setLocalFilter] = useState(filter);
+
+  useEffect(() => {
+    setMounted(true);
+    // โหลดค่า filter จาก localStorage เมื่อ component mount
+    const savedFilter = localStorage.getItem("filterLCstorage");
+    if (savedFilter) {
+      setLocalFilter(savedFilter);
+      setFilter(savedFilter);
+    }
+  }, []);
   const carouselItems_1 = [
     { img: "/svg/beach-umbrella.svg", label: "ริมทะเล", id: 1 },
     { img: "/svg/ufo.svg", label: "แปลก", id: 2 },
@@ -14,46 +28,34 @@ export default function AnchorStyle({ filter, setFilter }) {
     { img: "/svg/penthouse.svg", label: "มีดีไซน์", id: 4 },
     { img: "/svg/green-house.svg", label: "บ้านสีเขียว", id: 5 },
   ];
+  const handleItemClick = (label) => {
+    localStorage.setItem("filterLCstorage", label);
+    setLocalFilter(label);
+    setFilter(label);
+  };
+
+  if (!mounted) return null;
   return (
     <Carousel className="mx-20">
       <CarouselPrevious />
       <CarouselContent>
         {/* Category 1 section */}
         <CarouselItem className="items-center my-2 grid grid-cols-16">
-          {carouselItems_1.slice(0, 5).map((item, index) => {
-            return (
-              <div
-                className={`${
-                  filter === item.label
-                    ? "text-black font-bold border-b-2"
-                    : "opacity-40"
-                } w-full mt-3 mb-2.5 py-1 text-sm item-center flex flex-col justify-center items-center cursor-pointer transition duration-200 `}
-                key={index}
-                onClick={() => {
-                  localStorage.setItem("filterLCstorage", item.label);
-                  setFilter(item.label);
-                }}
-              >
-                <img src={item.img} alt="svg" className="w-6" />
-                <p className={`mt-2`}>{item.label}</p>
-              </div>
-            );
-          })}
+          {carouselItems_1.map((item) => (
+            <div
+              className={`${
+                localFilter === item.label
+                  ? "text-black font-bold border-b-2"
+                  : "opacity-40"
+              } w-full mt-3 mb-2.5 py-1 text-sm flex flex-col justify-center items-center cursor-pointer transition duration-200 `}
+              key={item.id}
+              onClick={() => handleItemClick(item.label)}
+            >
+              <img src={item.img} alt={item.label} className="w-6" />
+              <p className="mt-2">{item.label}</p>
+            </div>
+          ))}
         </CarouselItem>
-        {/* Category 2 section */}
-        {/* <CarouselItem className="items-center m-4 grid grid-cols-5 gap-4">
-          {carouselItems_1.slice(5, 10).map((item, index) => {
-            return (
-              <div
-                className="item-center flex flex-col justify-center items-center cursor-pointer hover:bg-gray-200 p-4 rounded-lg shadow-md transition duration-200"
-                key={index}
-              >
-                <img src={item.img} alt="svg" className="w-14" />
-                <p className="font-bold text-black">{item.label}</p>
-              </div>
-            );
-          })}
-        </CarouselItem> */}
       </CarouselContent>
       <CarouselNext />
     </Carousel>

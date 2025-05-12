@@ -4,8 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 const prompt = Prompt({
   weight: "400",
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: "--font-prompt",
+  subsets: ["thai"],
 });
 
 // const geistMono = Geist_Mono({
@@ -22,11 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" className={prompt.className}>
-        <body
-        // className={`${prompt.variable} antialiased`} //this line make error hard to fix it
-        >
-          {children}
-        </body>
+        <body>{children}</body>
       </html>
     </ClerkProvider>
   );
