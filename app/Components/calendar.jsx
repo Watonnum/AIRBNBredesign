@@ -3,12 +3,12 @@
 import { DayPicker, isDateRange } from "react-day-picker";
 import { th } from "date-fns/locale";
 import "react-day-picker/style.css";
-import { useState } from "react";
-import { addMonths, differenceInDays } from "date-fns";
+import { useState, useEffect } from "react";
+import { addDays, addMonths, differenceInDays } from "date-fns";
 
 const Calendar = () => {
   const today = new Date();
-  const nextDay = new Date(today);
+  const nextDay = addDays(today, 1);
   const nextMonth = addMonths(today, 1);
   const [month, setMonth] = useState(today);
   const [selectedRange, setSelectedRange] = useState({
@@ -18,7 +18,7 @@ const Calendar = () => {
 
   const convertTimestampToDate = (timestamp) => {
     const date = new Date(timestamp);
-    return date.toLocaleDateString();
+    return date.toLocaleDateString("en-US");
   };
 
   const showRange = () => {
@@ -39,8 +39,7 @@ const Calendar = () => {
           </p>
         </>
       );
-    }
-    return <p>Please select a range.</p>;
+    } else return <p>Please select a range.</p>;
   };
 
   return (
@@ -54,7 +53,7 @@ const Calendar = () => {
         onSelect={setSelectedRange}
         // onDayClick={(from, to) => {
         //   if (from) {
-        //     console.log(from.toLocaleDateString());
+        //     console.log(from);
         //   } else if (to) {
         //     console.log(to);
         //   }
