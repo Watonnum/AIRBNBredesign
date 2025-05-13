@@ -1,4 +1,4 @@
 <div align="center">
-       <img src="public/now.png" /> 
-       <img src="public/original.png" /> 
+       <img src="public/now1.png" />
+       <img src="public/now2.png" />
 </div>
