@@ -7,7 +7,6 @@ import RoomDesc from "@/app/Components/roomDesc";
 import RoomSummary from "@/app/Components/roomSummary";
 import Roombedplace from "@/app/Components/roombedplace";
 import AmenitiesList from "@/app/Components/roomAmenitiesList";
-import Datepicker from "@/app/Components/calendar";
 import Calendar from "@/app/Components/calendar";
 
 export function generateStaticParams() {
@@ -39,7 +38,7 @@ const Room = ({ param }) => {
 
       {/* Seperate 2 component */}
 
-      <div className="w-full flex">
+      <div className="w-full flex pb-4 border-b-2 border-[#E4E4E4]">
         <div className="w-1/2 flex flex-col justify-center items-start">
           {/* section about */}
           <RoomInfocard description={room.des} rating={room.rating} />
