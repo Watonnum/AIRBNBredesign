@@ -10,7 +10,7 @@ import AmenitiesList from "@/app/Components/roomAmenitiesList";
 import Calendar from "@/app/Components/calendar";
 
 export function generateStaticParams() {
-  return mockAPI.map((room) => ({ id: `${room.id}` }));
+  return mockAPI.map((room) => ({ id: `${room._id}` }));
 }
 
 const page = async ({ params }) => {

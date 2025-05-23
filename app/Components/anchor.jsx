@@ -21,12 +21,25 @@ export default function AnchorStyle({ filter, setFilter }) {
       setFilter(savedFilter);
     }
   }, []);
-  const carouselItems_1 = [
-    { img: "/svg/beach-umbrella.svg", label: "ริมทะเล", id: 1 },
-    { img: "/svg/ufo.svg", label: "แปลก", id: 2 },
-    { img: "/svg/treehouse.svg", label: "บ้านต้นไม้", id: 3 },
-    { img: "/svg/penthouse.svg", label: "มีดีไซน์", id: 4 },
-    { img: "/svg/green-house.svg", label: "บ้านสีเขียว", id: 5 },
+  const carouselItems = [
+    { img: "/svg/prototype_type_apartment.svg", label: "Apartment", id: 1 },
+    { img: "/svg/prototype_type_house.svg", label: "House", id: 2 },
+    { img: "/svg/prototype_type_condominium.svg", label: "Condominium", id: 3 },
+    {
+      img: "/svg/prototype_type_serviceAparthment.svg",
+      label: "Serviced apartment",
+      id: 4,
+    },
+    { img: "/svg/prototype_type_loft.svg", label: "Loft", id: 5 },
+    { img: "/svg/prototype_type_townhouse.svg", label: "Townhouse", id: 6 },
+    { img: "/svg/prototype_type_guestSuite.svg", label: "Guest suite", id: 7 },
+    {
+      img: "/svg/prototype_type_breakfast.svg",
+      label: "Bed and breakfast",
+      id: 8,
+    },
+    { img: "/svg/protype_type_boutique.svg", label: "Boutique hotel", id: 9 },
+    { img: "/svg/prototype_type_guestHouse.svg", label: "Guesthouse", id: 10 },
   ];
   const handleItemClick = (label) => {
     localStorage.setItem("filterLCstorage", label);
@@ -40,8 +53,8 @@ export default function AnchorStyle({ filter, setFilter }) {
       <CarouselPrevious />
       <CarouselContent>
         {/* Category 1 section */}
-        <CarouselItem className="items-center my-2 grid grid-cols-16">
-          {carouselItems_1.map((item) => (
+        <CarouselItem className="items-center my-2 grid grid-cols-10">
+          {carouselItems.map((item) => (
             <div
               className={`${
                 localFilter === item.label

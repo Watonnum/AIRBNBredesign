@@ -39,7 +39,7 @@ const Calendar = () => {
           </p>
         </>
       );
-    } else return <p>Please select a range.</p>;
+    }
   };
 
   return (
@@ -85,9 +85,9 @@ const Calendar = () => {
           convertTimestampToDate(Date.parse(selectedRange.to.toString()))
         )} */}
 
-        <p className="text-lg font-semibold flex flex-col justify-center items-center">
+        <div className="text-lg font-semibold flex flex-col justify-center items-center">
           {showRange()}
-        </p>
+        </div>
       </div>
     </div>
   );

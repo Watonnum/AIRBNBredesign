@@ -34,7 +34,7 @@ export default function Home() {
       </div>
 
       <RoomCard filter={filter} />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
