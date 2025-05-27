@@ -1,19 +1,6 @@
 import DialogExpand from "./dialogExpand";
 
-const RoomDesc = () => {
-  const descriptionMessage = {
-    header: [
-      "About this page",
-      "เกี่ยวกับที่พัก",
-      "บริเวณที่ใช้ได้",
-      "สิ่งอื่นที่ควรรู้",
-    ],
-    body: [
-      "4 cottage with bamboo ขนาดห้อง กว้าง 2 .5 เมตร ยาว 4 เมตร ที่นอนคิงไซส์ ม่าน2 ชั้น กันลม สามารถมองเห็นวิวทิวทัศน์ของนาข้าว นาถั่ว แปลงผักของฟาร์ม ชุดโต๊ะส่วนตัว นั่งรับประทานอาหารข้างกระท่อม ห้องน้ำรวม ฝักบัว เครื่องใช้ในห้องน้ำ ผ้าเช็ดตัว ",
-      "นั่งชิงช้าเล่น ทดลองปลูกผักเองได้ เก็บผักมาทำอาหาร เดินเที่ยวชมธรรมชาติ ในท้องทุ่งได้โดยทั่ว ",
-      "ซื้ออาหารมาทำเองได้ มีอุปกรณ์ให้",
-    ],
-  };
+const RoomDesc = ({ desc, id }) => {
   return (
     <>
       <div className="flex justify-start items-start w-full pt-8">
@@ -26,21 +13,16 @@ const RoomDesc = () => {
           </p>
         </div>
       </div>
-      <div className="pt-8 pb-12 flex flex-col justify-centeritems-start w-full">
-        <div className="h-36">
-          <p className="text-lg font-bold">{descriptionMessage.header[1]}</p>
+      <div className="pt-4 pb-8 flex flex-col justify-centeritems-start w-full">
+        <div className="">
+          <p className="text-lg font-bold py-4">{`Description`}</p>
           <p className="text-wrap hyphens-none line-clamp-5 text-base">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro
-            cumque nihil nesciunt libero consequatur eveniet possimus
-            repudiandae perspiciatis, saepe autem ut sapiente molestias, ducimus
-            quas vero! Voluptatibus vitae, est placeat alias a nemo quia
-            temporibus ducimus soluta iusto, quaerat iure voluptatum repudiandae
-            nobis adipisci quos hic optio blanditiis dolorem veniam?
+            {desc}
           </p>
         </div>
 
-        <div className="mt-4">
-          <DialogExpand descriptionMessage={descriptionMessage} />
+        <div className="pt-4">
+          <DialogExpand descriptionMessage={desc} />
         </div>
       </div>
     </>

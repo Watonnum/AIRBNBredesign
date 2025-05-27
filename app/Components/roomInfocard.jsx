@@ -4,17 +4,24 @@ import { GiClockwork } from "react-icons/gi";
 import { IoIosGitNetwork } from "react-icons/io";
 import Divider from "@mui/material/Divider";
 
-const RoomInfocard = ({ description, rating }) => {
+const RoomInfocard = ({
+  name,
+  rmtype,
+  rating,
+  countReview,
+  hostName,
+  hostThumbNail,
+}) => {
   return (
     <div className="flex flex-col mt-4">
       <div className="flex flex-col justify-center items-start">
-        <p className="text-2xl">Subname_notyetinfo</p>
-        <p className="text-gray-400">{description}</p>
+        <p className="text-xl">{name}</p>
+        <p className="text-gray-400">{rmtype}</p>
       </div>
 
       <div className="flex flex-col justify-center items-start mt-4">
         {/* review */}
-        {rating >= 4.95 ? (
+        {rating >= 95 ? (
           <div className="border border-[#E1E1E1] rounded-xl flex gap-2 p-4 justify-center items-center">
             <img src="/img/bookmark.png" alt="" className="mx-2 p-2" />
             <div className="mx-2">
@@ -22,7 +29,7 @@ const RoomInfocard = ({ description, rating }) => {
             </div>
             <div className="flex flex-col justify-center items-center mx-2">
               <p className="text-xl font-bold">{rating}</p>
-              {Array.from(Array(Math.floor(rating)), (_, index) => "★")}
+              {Array.from(Array(Math.floor(rating / 20)), (_, index) => "★")}
             </div>
             <Divider
               orientation="vertical"
@@ -32,7 +39,7 @@ const RoomInfocard = ({ description, rating }) => {
             />
             <Link href="">
               <div className="flex flex-col justify-center items-center mx-2">
-                <p className="text-2xl no-underline">XX</p>
+                <p className="text-2xl no-underline">{countReview}</p>
                 <p className="underline">view</p>
               </div>
             </Link>
@@ -44,10 +51,10 @@ const RoomInfocard = ({ description, rating }) => {
 
         {/* hostinfo */}
         <div className="flex justify-start items-center mt-2 p-4 w-full">
-          <img src={"/img/user.png"} />
+          <img src={hostThumbNail || "No pic"} className="rounded-full" />
           <div className="flex flex-col justify-center items-start mx-4">
             <p>Posted by</p>
-            <p>medal's user & period of user</p>
+            <p>{hostName}</p>
           </div>
         </div>
         {/* hostinfo */}

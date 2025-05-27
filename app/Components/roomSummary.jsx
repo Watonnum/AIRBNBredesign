@@ -10,7 +10,7 @@ const RoomSummary = ({ price }) => {
         <span className="text-xl font-bold">{`฿` + price}</span>
         <span className="text-gray-500">
           {" "}
-          {`( `}1 คน / คืน {`)`}
+          {`( `}1 person / night {`)`}
         </span>
       </div>
 

@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const AmenitiesList = () => {
-  const amenitiesList = [
+  const feedAmenitiesList = [
     {
       id: 1,
       name: "ห้องครัว",
@@ -78,7 +78,7 @@ const AmenitiesList = () => {
       <div className="flex w-full py-4 justify-center items-center">
         {/* left */}
         <div className="w-1/2">
-          {amenitiesList.slice(0, 5).map((amenities) => (
+          {feedAmenitiesList.slice(0, 5).map((amenities) => (
             <div
               className="flex justify-start items-center pb-2 gap-4 h-10"
               key={amenities.id}
@@ -91,7 +91,7 @@ const AmenitiesList = () => {
         {/* left */}
         {/* right */}
         <div className="w-1/2">
-          {amenitiesList.slice(5, 10).map((amenities) => (
+          {feedAmenitiesList.slice(5, 10).map((amenities) => (
             <div
               className="flex justify-start items-center pb-2 gap-4 h-10"
               key={amenities.id}

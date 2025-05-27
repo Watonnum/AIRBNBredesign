@@ -20,15 +20,14 @@ const DialogExpand = ({ descriptionMessage }) => {
         </Button>
       </DialogTrigger>
       {/* รอแก้ เพราะHydration & div nested p */}
-      <DialogContent className="sm:max-w-[425px] bg-white max-w-[780px]">
+      <DialogContent className="sm:max-w-[425px] bg-white md:max-w-[780px] max-w-[1080px]">
         <DialogHeader className="p-4 rounded-2xl bg-[#FF385C] flex items-center">
           <DialogTitle className="text-white font-bold">
-            {descriptionMessage.header[0]}
+            {`About this place`}
           </DialogTitle>
         </DialogHeader>
         <DialogDescription className="hyphens-auto flex flex-col justify-center items-start mt-4">
-          {descriptionMessage.header[1]}
-          {descriptionMessage.body[0]}
+          {descriptionMessage}
         </DialogDescription>
       </DialogContent>
       {/* รอแก้ */}
